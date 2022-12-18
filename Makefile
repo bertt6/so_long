@@ -1,7 +1,7 @@
 NAME = so_long
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -L./mlx -lmlx -framework AppKit -framework OpenGL
-SRCS =  osman.c \
+SRCS =  so_long.c \
 
 Y = "\033[33m"
 R = "\033[31m"
