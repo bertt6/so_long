@@ -1,25 +1,4 @@
-#include "./mlx/mlx.h"
-#include <stdlib.h>
-#define PL_FT "./player_front.xpm"
-#define PL_LT "./player_left.xpm"
-#define PL_RT "./player_right.xpm"
-#define PL_BC "./player_back.xpm"
-#define GR "./game_ground.xpm"
-#include <stdio.h>
-#define WIN_WEIGHT 1800
-#define WIN_HEIGHT 1200
-
-
-typedef struct s_data
-{
-    void    *mlx;
-    void    *mlx_window;
-    void    **img;
-    int        imgx;
-    int        imgy;
-    int        position_x;
-    int        position_y;
-}    t_data;
+#include "so_long.h"
 
 int close(int key, t_data *data)
 {
@@ -28,6 +7,7 @@ int close(int key, t_data *data)
         exit(0);
     return 0;
 }
+
 int    key_event(int keycode, t_data *data)
 {
     mlx_clear_window(data->mlx, data->mlx_window);
@@ -35,6 +15,7 @@ int    key_event(int keycode, t_data *data)
     int b;
 
     a = 0;
+    data->key = keycode;
     while (a < 30)
     {
         b = 0;
@@ -76,6 +57,9 @@ int    key_event(int keycode, t_data *data)
     }
     return (0);
 }
+
+
+
 int    mouse(int   button ,int  x, int y, t_data *data)
 {
     int z = x + y + button; 
@@ -84,12 +68,42 @@ int    mouse(int   button ,int  x, int y, t_data *data)
     return(0);
 }
 
+int	ft_update (t_data *param)
+{
+    int x;
+	t_data	*program = param;
+	static int	frame;
+	frame++;
+	if (frame == ANIMATION_FRAMES)
+		program->position_y += 1;
+	else if (frame >= ANIMATION_FRAMES * 2)
+	{
+		program->position_y -= 1;
+		frame = 0;
+	}
+    x = param->key;
+    if (param->key == 0)
+    {
+        mlx_put_image_to_window(program->mlx, program->mlx_window,
+            program->img[1], program->position_x, program->position_y);
+    }
+    else if (param->key == 13  || param->key == 13)
+    {
+    lşkc                                                              3cr2e1wz"  
+    
+    
+    
+                 program->img[3], program->position_x, program->position_y);
+    }
+
+	return (0);
+}
+
 int    main(void)
 {
     t_data    *data;
-    data = calloc(sizeof(t_data), 1);
-    data->img = (void **)malloc(sizeof(void *) * 4);
-
+    data = calloc(sizeof(t_data), 10);
+    data->img = (void **)calloc(sizeof(void *), 4);
     data->mlx = mlx_init();
     data->img[0] = mlx_xpm_file_to_image(data->mlx, PL_FT,
             &data->imgx, &data->imgy);
@@ -127,5 +141,7 @@ int    main(void)
             data->position_x, data->position_y);
     mlx_hook(data->mlx_window, 2, 0, key_event, data);
     mlx_hook(data->mlx_window, 4, 0, mouse, data);
+
+	mlx_loop_hook(data->mlx, *ft_update, data);
     mlx_loop(data->mlx);
 }

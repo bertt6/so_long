@@ -65,14 +65,3 @@ void ft_path_find(int matrix[][N])
     else
         write(1, "Hayır/False\n", 12);
 }
-
-int main(void)
-{
-int matrix[N][N] = { { 'P', '1', '0', '0' }, 
-                     { '1', '0', '1', '0' }, 
-                     { '1', '0', '1', '0' },
-                     { '1', 'C', '0', '0' } };
-
-ft_path_find(matrix);
-return (0); 
-}
