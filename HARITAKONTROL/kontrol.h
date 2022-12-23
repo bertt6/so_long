@@ -7,9 +7,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-int     ft_safe(int i, int j, int matrix[][N]);
-int     ft_path(int matrix[][N], int i, int j, int visited[][N]);
-void    ft_path_find(int matrix[][N]);
+void ft_argcheck(char *map[]);
 size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize);
 char	*ft_substr(char	const *s, unsigned int start, size_t len);
 int	    ftcount(char const *s, char c);

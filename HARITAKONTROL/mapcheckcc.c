@@ -1,70 +1,35 @@
-#include <unistd.h> 
-#include <string.h>
 #include "kontrol.h"
 
-int ft_safe(int i, int j, int matrix[][N]) 
+void ft_argcheck(char *map[])
 {
-    (void) matrix[N][N];
-    if (i >= 0 && i < N && j >= 0 && j < N)
-        return (1);
-    return (0);
-}
-
-int ft_path(int matrix[][N], int i, int j, int visited[][N])
-{
-    if (ft_safe(i, j, matrix) && matrix[i][j] != '1' && !visited[i][j]) 
-    {
-        visited[i][j] = 1;
-        if (matrix[i][j] == 'C') 
-            return (1);
-        if (ft_path(matrix, i - 1, j, visited)) 
-            return (1);
-        if (ft_path(matrix, i, j - 1, visited)) 
-            return (1);
-        if (ft_path(matrix, i + 1, j, visited)) 
-            return (1);
-        if (ft_path(matrix, i, j + 1, visited)) 
-            return (1);
-    }
-    return (0); 
-}
-
-void ft_path_find(int matrix[][N]) 
-{    
-    int visited[N][N];
-    int result;
     int i;
     int j;
 
-    memset(visited, 0 , sizeof(visited));
-    result = 0;
-    i = -1;
-    while(++i < N)
+    j = 0;
+    printf("CHECK : %s\n", map[4]);
+    while(*map && map[j])
     {
-        if(matrix[i][j] == 'P' && !visited[i][j])
+        i = 0;
+        while(map[j][i])
         {
-            if(ft_path(matrix, i, j, visited))
-            {
-                result = 1;
-                break;
+            if(!((*map[i] == 'P' || *map[i] == '0' || *map[i] == '1' || *map[i] == '0' || *map[i] == 'E')))
+            {    
+                write(1, "Geçersiz Map!", 13);
+                return ;
             }
+            i++;
         }
-
+        j++;
     }
-    if(result)
-        write(1, "true\n", 5);
-    else
-        write(1, "false\n", 6);
+    write(1, "Geçerli map!", 12);
 }
 
-
-int main(void)
+int main()
 {
-    char **matrix;
-
+    char **map;
     int fd = open("map.ber", O_RDWR);
-    char *a = ft_read(fd);
-    printf("%s\n", a);
-    matrix = ft_split(a, '\n');
-    return (0); 
+    char *s = ft_read(fd);
+    printf("%s", s);
+    map = ft_split(s, '\n');
+    ft_argcheck(map);
 }
