@@ -2,7 +2,7 @@ NAME = so_long
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -L./mlx -lmlx -framework AppKit -framework OpenGL
 SRCS =  so_long.c \
-		ft_split.c ft_readfile.c \
+		ft_split.c ft_readfile.c ft_itoa.c ft_strdup.c\
 		yardim.c
 
 Y = "\033[33m"
