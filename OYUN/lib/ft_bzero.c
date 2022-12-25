@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../so_long.h"
 
 void	ft_bzero(void *s, size_t n)
 {

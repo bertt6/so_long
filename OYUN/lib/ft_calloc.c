@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../so_long.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

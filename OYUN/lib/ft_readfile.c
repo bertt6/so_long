@@ -1,12 +1,10 @@
-#include "kontrol.h"
+#include "../so_long.h"
 
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
 	i = 0;
-	if (!str)
-		return 0;
 	while (str[i])
 		i++;
 	return (i);
@@ -48,7 +46,6 @@ char	*ft_read(int fd)
 	int		rd_byte;
 
 	buff = malloc (1 * sizeof(char));
-	str = malloc(1);
 	if (!buff)
 		return (0);
 	rd_byte = 1;
