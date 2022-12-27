@@ -1,11 +1,6 @@
 #include "../so_long.h"
 
-// int is_safe(int i, int j, char *map[])
-// {
-//     (void)map;
-//     if (i >= 0 && i < games->mat_y && j >= 0 && j < games->mat_x) return (1);
-//         return (0); 
-// }
+
 void ft_argcheck(char *map[])
 {
     int i;

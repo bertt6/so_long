@@ -6,6 +6,9 @@
 #define     PL_RT "xpms/player_right.xpm"
 #define     PL_BC "xpms/player_back.xpm"
 #define     GR "xpms/game_ground.xpm"
+#define     WLL "xpms/wall.xpm"
+#define     COIN "xpms/coin.xpm"
+#define     DOR "xpms/door.xpm"
 #define     WIN_WEIGHT 1800
 #define     WIN_HEIGHT 1200
 #define     N 4
@@ -37,16 +40,23 @@ typedef struct s_data
     int         position_y;
     int         key;
     char        **map;
+    char        **controlmap;
     int         height;
     int         width;
     int         step;
+    int         collectnum;
 }               t_data;
 
-int find_player_x(char *map[]);
-int find_player_y(char *map[]);
+int     find_player_x(char *map[]);
+int     find_player_y(char *map[]);
 
+void    hookles(t_data *data);
+void	ft_key_hook(int keyhook, t_data *game);
+void    ft_putimages(t_data *data);
+void    ft_window(t_data *data);
 void	*ft_calloc(size_t count, size_t size);
-int map_width(char *map[]);
+int	    ft_update (t_data *param);
+int     map_width(char *map[]);
 int     map_height(char *map[]);
 int     ft_close(int key, t_data *data);
 int     key_event(int keycode, t_data *data);
@@ -72,6 +82,7 @@ char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_read(int fd);
+int	ft_keyboard(int keyhook, t_data *game);
 
 
 # ifndef BUFFER_SIZE

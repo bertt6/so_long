@@ -12,32 +12,13 @@ int    key_event(int keycode, t_data *data)
 {
     mlx_clear_window(data->mlx, data->mlx_window);
     int a;
-    int b;
     char *step;
     char *cor_x;
     char *cor_y;
 
     a = 0;
     data->key = keycode;
-    while (a < 30)
-    {
-        b = 0;
-        while (b < 30)
-        {
-            mlx_put_image_to_window(data->mlx, data->mlx_window, data->img[4],
-            a * 64, b * 64);
-            b++;
-        }
-        a++;
-    }
-    /*  13 -> W
-        1  -> S
-        0  -> A
-        2  -> D
-        FRONT -> 0
-        LEFT  -> 1
-        RIGHT -> 2
-        BACK  -> 3*/
+    
     if (keycode == 13)//w harfi
     {
         data->position_y-=64;
@@ -64,16 +45,10 @@ int    key_event(int keycode, t_data *data)
     cor_x = ft_itoa(data->position_x);
     cor_y = ft_itoa(data->position_y);
     
-    mlx_string_put(data->mlx, data->mlx_window, 75, 20, 0x00FF00, step);
-    mlx_string_put(data->mlx, data->mlx_window, 10, 20, 0x00FF00, "Step :");
-    mlx_string_put(data->mlx, data->mlx_window, 10, 40, 0x00FF00, "Kordinatlar :");
-    mlx_string_put(data->mlx, data->mlx_window, 150, 40, 0x00FF00, cor_x);
-    mlx_string_put(data->mlx, data->mlx_window, 200, 40, 0x00FF00, cor_y);
-
+  
+    hookles(data);
     return (0);
 }
-
-
 
 int    mouse(int   button ,int  x, int y, t_data *data)
 {
@@ -125,7 +100,7 @@ int	ft_update (t_data *param)
     {
         mlx_put_image_to_window(program->mlx, program->mlx_window,
             program->img[1], program->position_x, program->position_y);
-        }
+    }
    
 	return (0);
 }
@@ -135,54 +110,22 @@ int    main(void)
     t_data    *data;  
     data = calloc(sizeof(t_data), 1);
     data->key = 1;
-    data->img = (void **)ft_calloc(sizeof(void *), 4);
+    data->img = (void **)ft_calloc(sizeof(void *), 7);
     data->mlx = mlx_init();
 
-    data->img[0] = mlx_xpm_file_to_image(data->mlx, PL_FT,
-        &data->imgx, &data->imgy);
-    data->img[1] = mlx_xpm_file_to_image(data->mlx, PL_LT,
-        &data->imgx, &data->imgy);
-    data->img[2] = mlx_xpm_file_to_image(data->mlx, PL_RT,
-        &data->imgx, &data->imgy);
-    data->img[3] = mlx_xpm_file_to_image(data->mlx, PL_BC,
-            &data->imgx, &data->imgy);
-        data->img[4] = mlx_xpm_file_to_image(data->mlx, GR,
-            &data->imgx, &data->imgy);
+    
     int fd = open("map.ber", O_RDWR);
     char *s = ft_read(fd);
     data->map = ft_split(s, '\n');
 
-
     data->height = map_height(data->map);
     data->width = map_width(data->map);
-    printf("%d  -  %d", data->height, data->width);
-    data->mlx_window = mlx_new_window(data->mlx, data->height * 64, data->width * 64 , "Pencere :D");
-
-
-    data->position_x = find_player_x(data->map) * 64;
-    data->position_y = find_player_y(data->map) * 64;
-
+    data->controlmap = data->map;
+    
     data->mat_y = data->height;
     data->mat_x = data->width;
 
-    int a;
-    int b;
-
-    a = 0;
-    while (a < 30)
-    {
-        b = 0;
-        while (b < 30)
-        {
-            mlx_put_image_to_window(data->mlx, data->mlx_window, data->img[4],
-            a * 64, b * 64);
-            b++;
-        }
-        a++;
-    }
     ft_argcheck(data->map);
-    mlx_hook(data->mlx_window, 3, 0, key_event, data);
-    mlx_hook(data->mlx_window, 4, 0, mouse, data);
-    mlx_loop_hook(data->mlx, *ft_update, data);
-    mlx_loop(data->mlx);
+    ft_window(data);
+    
 }
