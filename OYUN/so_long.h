@@ -50,6 +50,7 @@ typedef struct s_data
 int     find_player_x(char *map[]);
 int     find_player_y(char *map[]);
 
+int	    bercheck(char *s);
 void    hookles(t_data *data);
 void	ft_key_hook(int keyhook, t_data *game);
 void    ft_putimages(t_data *data);

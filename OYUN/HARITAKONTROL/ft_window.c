@@ -4,7 +4,8 @@ void ft_window(t_data *data)
 {
     data->mlx = mlx_init();
     printf("%d, %d\n", data->width, data->height);
-    data->mlx_window = mlx_new_window(data->mlx, data->width * 64, data->height * 64, "SO_LONG");
+    data->mlx_window = mlx_new_window(data->mlx, data->width * 64, 
+    data->height * 64, "SO_LONG");
     data->img[0] = mlx_xpm_file_to_image(data->mlx, PL_FT,
         &data->imgx, &data->imgy);
     data->img[1] = mlx_xpm_file_to_image(data->mlx, PL_LT,
@@ -15,9 +16,12 @@ void ft_window(t_data *data)
             &data->imgx, &data->imgy);
         data->img[4] = mlx_xpm_file_to_image(data->mlx, GR,
             &data->imgx, &data->imgy);
-    data->img[5] = mlx_xpm_file_to_image(data->mlx, WLL, &data->imgx, &data->imgy);
-    data->img[6] = mlx_xpm_file_to_image(data->mlx, COIN, &data->imgx, &data->imgy);
-    data->img[7] = mlx_xpm_file_to_image(data->mlx, DOR, &data->imgx, &data->imgy);
+    data->img[5] = mlx_xpm_file_to_image(data->mlx, WLL, 
+            &data->imgx, &data->imgy);
+    data->img[6] = mlx_xpm_file_to_image(data->mlx, COIN, 
+            &data->imgx, &data->imgy);
+    data->img[7] = mlx_xpm_file_to_image(data->mlx, DOR, 
+            &data->imgx, &data->imgy);
 
     hookles(data);
 }
@@ -45,7 +49,8 @@ void ft_putimages(t_data *data)
     {
         data->mat_x = 0;
         while(data->controlmap[data->mat_y][data->mat_x])
-        {
+        {   
+            mlx_put_image_to_window(data->mlx, data->mlx_window, data->img[4], data->mat_x * 64, data->mat_y * 64);
             if(data->controlmap[data->mat_y][data->mat_x] == '1')
                 mlx_put_image_to_window(data->mlx, data->mlx_window, data->img[5], data->mat_x * 64, data->mat_y * 64);
             else if(data->controlmap[data->mat_y][data->mat_x] == '0')
@@ -60,33 +65,6 @@ void ft_putimages(t_data *data)
         }
         data->mat_y++;
     }
-}
-
-int	ft_keyboard(int keyhook, t_data *game)
-{
-    if (keyhook == 53)
-    {
-		mlx_destroy_window(game->mlx, game->mlx_window);
-	    exit(0);
-    }
-	if (game->collectnum == 0
-		&& ((keyhook == 2 && \
-		game->controlmap[game->position_y][game->position_x + 1] == 'E')
-		|| (keyhook == 1 && \
-		game->controlmap[game->position_y + 1][game->position_y] == 'E')
-		|| (keyhook == 0 && \
-		game->controlmap[game->position_y][game->position_y - 1] == 'E')
-		|| (keyhook == 13 && \
-		game->controlmap[game->position_y - 1][game->position_x] == 'E')))
-	{
-		printf("Walk Count: %d\n", game->step + 1);
-		printf("Game Over!! YOU WON!!\n");
-		mlx_destroy_window(game->mlx, game->mlx_window);
-	    exit(0);
-	}
-	ft_key_hook(keyhook, game);
-	hookles(game);
-	return (0);
 }
 
 void	ft_key_hook(int keyhook, t_data *game)
@@ -124,14 +102,4 @@ void	ft_key_hook(int keyhook, t_data *game)
         mlx_put_image_to_window(game->mlx, game->mlx_window,
             game->img[1], game->position_x, game->position_y);
     }
-}
-
-void ft_startcharacter(t_data *data)
-{
-    data->position_x = find_player_x(data->map) * 64;
-    data->position_y = find_player_y(data->map) * 64;
-
-    mlx_put_image_to_window(data->mlx, data->mlx_window,
-            data->img[0], data->position_x, data->position_y);
-
 }

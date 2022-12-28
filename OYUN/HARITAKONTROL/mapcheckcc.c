@@ -38,14 +38,11 @@ int map_width(char *map[])
 
 int map_height(char *map[])
 {
-    int i;
     int j;
-
     j = 0;
-    i = 0;
-
-        while(map[j])
-            j++;
+    
+    while(map[j])
+        j++;
 
     return (j);
 }
