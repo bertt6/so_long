@@ -3,7 +3,7 @@
 void	ft_move_up(t_data *game)
 {
 	if (game->controlmap[game->position_y - 1][game->position_x] == 'C')
-		game->collectnum--;
+		game->coin--;
 	game->controlmap[game->position_y][game->position_x] = '0';
 	game->controlmap[game->position_y - 1][game->position_x] = 'P';
 	game->position_y--;
@@ -13,7 +13,7 @@ void	ft_move_up(t_data *game)
 void	ft_move_down(t_data *game)
 {
 	if (game->controlmap[game->position_y + 1][game->position_x] == 'C')
-		game->collectnum--;
+		game->coin--;
 	game->controlmap[game->position_y][game->position_x] = '0';
 	game->controlmap[game->position_y + 1][game->position_x] = 'P';
 	game->position_y++;
@@ -23,7 +23,7 @@ void	ft_move_down(t_data *game)
 void	ft_move_left(t_data *game)
 {
 	if (game->controlmap[game->position_y][game->position_x - 1] == 'C')
-		game->collectnum--;
+		game->coin--;
 	game->controlmap[game->position_y][game->position_x] = '0';
 	game->controlmap[game->position_y][game->position_x - 1] = 'P';
 	game->step++;
@@ -33,7 +33,7 @@ void	ft_move_left(t_data *game)
 void	ft_move_right(t_data *game)
 {
 	if (game->controlmap[game->position_y][game->position_x + 1] == 'C')
-		game->collectnum--;
+		game->coin--;
 	game->controlmap[game->position_y][game->position_x] = '0';
 	game->controlmap[game->position_y][game->position_x + 1] = 'P';
 	game->step++;

@@ -83,7 +83,7 @@ int    main(int ac, char **av)
         data->controlmap = data->map;
         data->mat_y = data->height;
         data->mat_x = data->width;
-
+        
         ft_argcheck(data->map);
         ft_window(data);
     }
