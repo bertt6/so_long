@@ -11,7 +11,6 @@
 #define     DOR "xpms/door.xpm"
 #define     WIN_WEIGHT 1800
 #define     WIN_HEIGHT 1200
-#define     N 4
 
 
 # ifndef ANIMATION_FRAMES
@@ -50,6 +49,15 @@ typedef struct s_data
 int     find_player_x(char *map[]);
 int     find_player_y(char *map[]);
 
+void	ft_move_up(t_data *game);
+void	ft_move_down(t_data *game);
+void	ft_move_left(t_data *game);
+void	ft_move_right(t_data *game);
+
+int	ft_keyboard(int keyhook, t_data *game);
+
+
+
 int	    bercheck(char *s);
 void    hookles(t_data *data);
 void	ft_key_hook(int keyhook, t_data *game);
@@ -66,6 +74,7 @@ void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s1);
+
 int	    ft_numlen(long nb);
 void    init_matrix(t_data *games);
 void    map_exit_chack(int i, int j, t_data *games); 
@@ -83,7 +92,6 @@ char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_read(int fd);
-int	ft_keyboard(int keyhook, t_data *game);
 
 
 # ifndef BUFFER_SIZE

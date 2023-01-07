@@ -8,55 +8,7 @@ int ft_close(int key, t_data *data)
     return 0;
 }
 
-int    key_event(int keycode, t_data *data)
-{
-    mlx_clear_window(data->mlx, data->mlx_window);
-    data->key = keycode;
-    
-    if (keycode == 13)//w harfi
-    {
-        data->position_y-=64;
-        data->step+=1;
-    }
-    if (keycode == 2)//d harfi
-    {
-        data->position_x+=64;
-                data->step+=1;
-    }
-    if (keycode == 1)//s harfi
-    {
-        data->position_y+=64;
-                data->step+=1;
-    }
-    if (keycode == 0)//a harfi
-    {
-        data->position_x-=64;
-                data->step+=1;
-    }
-    if (keycode == 53)
-        exit(1);
 
-    if (data->collectnum == 0
-		&& ((keycode == 2 && \
-		data->controlmap[data->position_y][data->position_x + 1] == 'E')
-		|| (keycode == 1 && \
-		data->controlmap[data->position_y + 1][data->position_y] == 'E')
-		|| (keycode == 0 && \
-		data->controlmap[data->position_y][data->position_y - 1] == 'E')
-		|| (keycode == 13 && \
-		data->controlmap[data->position_y - 1][data->position_x] == 'E')))
-	{
-		printf("Walk Count: %d\n", data->step + 1);
-		printf("Game Over!! YOU WON!!\n");
-		mlx_destroy_window(data->mlx, data->mlx_window);
-	    exit(0);
-	}
-    printf("CONTROL1\n");
-	ft_key_hook(keycode, data);
-	hookles(data);
-    printf("CONTROL3\n");
-    return (0);
-}
 
 int    mouse(int   button ,int  x, int y, t_data *data)
 {
