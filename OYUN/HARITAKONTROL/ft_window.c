@@ -21,7 +21,6 @@ void ft_window(t_data *data)
             &data->imgx, &data->imgy);
     data->img[7] = mlx_xpm_file_to_image(data->mlx, DOR, 
             &data->imgx, &data->imgy);
-
     hookles(data);
 }
 
@@ -44,7 +43,6 @@ void hookles(t_data *data)
 void	ft_putimages(t_data *game)
 {
 	
-
 	game->coin = 0;
 	mlx_clear_window(game->mlx, game->mlx_window);
 	while (game->controlmap[game->mat_y])
@@ -70,7 +68,6 @@ void	ft_putimages(t_data *game)
                 mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[7], game->mat_x * 64, game->mat_y * 64);
 			if (game->controlmap[game->mat_y][game->mat_x] == '0')
 				mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[4], game->mat_x * 64, game->mat_y * 64);
-
 			game->mat_x ++;
 		}
 		game->mat_y++;
@@ -109,12 +106,11 @@ void	ft_key_hook(int keyhook, t_data *game)
 	if (keyhook == 2 && game->controlmap[game->position_y][game->position_x + 1] != '1'
 		&& game->controlmap[game->position_y][game->position_x + 1] != 'E')
         ft_move_right(game);
-
-	
 }
 
 int	ft_keyboard(int keyhook, t_data *game)
 {
+	ft_putimages(game);
 	if (keyhook == 53)
         exit(1);
 	if (game->coin == 0
@@ -127,11 +123,12 @@ int	ft_keyboard(int keyhook, t_data *game)
 		|| (keyhook == 13 && \
 		game->controlmap[game->position_y - 1][game->position_x] == 'E')))
 	{
-		printf("Walk Count: %d\n", game->step + 1);
-		printf("Game Over!! YOU WON!!\n");
+		printf("Adim sayisi: %d\n", game->step + 1);
+		printf("Oyun bitti! Kazandiniz!\n");
 		exit(1);
 	}
 	ft_key_hook(keyhook, game);
 	hookles(game);
+
 	return (0);
 }

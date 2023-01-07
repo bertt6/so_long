@@ -8,8 +8,6 @@ int ft_close(int key, t_data *data)
     return 0;
 }
 
-
-
 int    mouse(int   button ,int  x, int y, t_data *data)
 {
     int z = x + y + button; 
@@ -28,7 +26,6 @@ int	ft_update (t_data *param)
         LEFT  -> 1
         RIGHT -> 2
         BACK  -> 3*/
-
 	t_data	*program = param;
 	static int	frame;
 	frame++;
@@ -39,8 +36,6 @@ int	ft_update (t_data *param)
 		program->position_y -= 1;
 		frame = 0;
 	}
-    
-   
 	return (0);
 }
 
@@ -70,7 +65,6 @@ int    main(int ac, char **av)
         data = calloc(sizeof(t_data), 1);
         data->key = 1;
         data->img = (void **)ft_calloc(sizeof(void *), 7);
-        data->mlx = mlx_init();
 
         
         int fd = open(av[1], O_RDWR);
@@ -83,7 +77,7 @@ int    main(int ac, char **av)
         data->controlmap = data->map;
         data->mat_y = data->height;
         data->mat_x = data->width;
-        
+
         ft_argcheck(data->map);
         ft_window(data);
     }
