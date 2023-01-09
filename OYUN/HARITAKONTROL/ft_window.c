@@ -4,7 +4,7 @@ void ft_window(t_data *data)
 {
     data->mlx = mlx_init();
     data->mlx_window = mlx_new_window(data->mlx, data->width * 64, 
-    data->height * 64, "SO_LONG");
+    data->height * 64, "bsamli");
     data->img[0] = mlx_xpm_file_to_image(data->mlx, PL_FT,
         &data->imgx, &data->imgy);
     data->img[1] = mlx_xpm_file_to_image(data->mlx, PL_LT,
@@ -28,6 +28,7 @@ void hookles(t_data *data)
 {
     char *step;
 
+    data->coin = 0;
     data->mat_x = 0;
     data->mat_y = 0;
     step = ft_itoa(data->step);
@@ -42,31 +43,29 @@ void hookles(t_data *data)
 
 void	ft_putimages(t_data *game)
 {
-	
-	game->coin = 0;
 	mlx_clear_window(game->mlx, game->mlx_window);
-	while (game->controlmap[game->mat_y])
+	while (game->map[game->mat_y])
 	{
 		game->mat_x = 0;
-		while (game->controlmap[game->mat_y][game->mat_x])
+		while (game->map[game->mat_y][game->mat_x])
 		{
 			mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[4], game->mat_x * 64, game->mat_y * 64);
-			if (game->controlmap[game->mat_y][game->mat_x] == '1')
+			if (game->map[game->mat_y][game->mat_x] == '1')
                 mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[5], game->mat_x * 64, game->mat_y * 64);
-			if (game->controlmap[game->mat_y][game->mat_x] == 'P')
+			if (game->map[game->mat_y][game->mat_x] == 'P')
 			{
                 mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[0], game->mat_x * 64, game->mat_y * 64);
 				game->position_x = game->mat_x;
 				game->position_y = game->mat_y;
 			}				
-			if (game->controlmap[game->mat_y][game->mat_x] == 'C')
+			if (game->map[game->mat_y][game->mat_x] == 'C')
 			{
 				mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[6], game->mat_x * 64, game->mat_y * 64);
 				game->coin++;
 			}
-			if (game->controlmap[game->mat_y][game->mat_x] == 'E')
+			if (game->map[game->mat_y][game->mat_x] == 'E')
                 mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[7], game->mat_x * 64, game->mat_y * 64);
-			if (game->controlmap[game->mat_y][game->mat_x] == '0')
+			if (game->map[game->mat_y][game->mat_x] == '0')
 				mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[4], game->mat_x * 64, game->mat_y * 64);
 			game->mat_x ++;
 		}
@@ -94,17 +93,17 @@ void can_go_exit(t_data *data)
 void	ft_key_hook(int keyhook, t_data *game)
 {
 	if (keyhook == 13 && \
-		game->controlmap[game->position_y - 1][game->position_y] != '1'
-		&& game->controlmap[game->position_y - 1][game->position_x] != 'E')
+		game->map[game->position_y - 1][game->position_y] != '1'
+		&& game->map[game->position_y - 1][game->position_x] != 'E')
         ft_move_up(game);
-	if (keyhook == 0 && game->controlmap[game->position_y][game->position_x - 1] != '1'
-		&& game->controlmap[game->position_y][game->position_x - 1] != 'E')
+	if (keyhook == 0 && game->map[game->position_y][game->position_x - 1] != '1'
+		&& game->map[game->position_y][game->position_x - 1] != 'E')
         ft_move_left(game);
-	if (keyhook == 1 && game->controlmap[game->position_y + 1][game->position_x] != '1'
-		&& game->controlmap[game->position_y + 1][game->position_x] != 'E')
+	if (keyhook == 1 && game->map[game->position_y + 1][game->position_x] != '1'
+		&& game->map[game->position_y + 1][game->position_x] != 'E')
         ft_move_down(game);
-	if (keyhook == 2 && game->controlmap[game->position_y][game->position_x + 1] != '1'
-		&& game->controlmap[game->position_y][game->position_x + 1] != 'E')
+	if (keyhook == 2 && game->map[game->position_y][game->position_x + 1] != '1'
+		&& game->map[game->position_y][game->position_x + 1] != 'E')
         ft_move_right(game);
 }
 
@@ -115,13 +114,13 @@ int	ft_keyboard(int keyhook, t_data *game)
         exit(1);
 	if (game->coin == 0
 		&& ((keyhook == 2 && \
-		game->controlmap[game->position_y][game->position_x + 1] == 'E')
+		game->map[game->position_y][game->position_x + 1] == 'E')
 		|| (keyhook == 1 && \
-		game->controlmap[game->position_y + 1][game->position_x] == 'E')
+		game->map[game->position_y + 1][game->position_x] == 'E')
 		|| (keyhook == 0 && \
-		game->controlmap[game->position_y][game->position_x - 1] == 'E')
+		game->map[game->position_y][game->position_x - 1] == 'E')
 		|| (keyhook == 13 && \
-		game->controlmap[game->position_y - 1][game->position_x] == 'E')))
+		game->map[game->position_y - 1][game->position_x] == 'E')))
 	{
 		printf("Adim sayisi: %d\n", game->step + 1);
 		printf("Oyun bitti! Kazandiniz!\n");

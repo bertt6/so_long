@@ -3,8 +3,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -L./mlx -lmlx -framework AppKit -framework OpenGL
 SRCS =  so_long.c \
 		lib/ft_split.c lib/ft_itoa.c lib/ft_strdup.c\
-		HARITAKONTROL/ft_readfile.c HARITAKONTROL/ft_split.c HARITAKONTROL/mapcheckcc.c lib/ft_calloc.c \
-		lib/ft_bzero.c lib/ft_memset.c HARITAKONTROL/map.c HARITAKONTROL/ft_window.c move.c
+		HARITAKONTROL/ft_readfile.c HARITAKONTROL/mapcheckcc.c lib/ft_calloc.c \
+		lib/ft_bzero.c lib/ft_memset.c  HARITAKONTROL/ft_window.c move.c HARITAKONTROL/mapchecker.c \
+		HARITAKONTROL/controls.c
 
 Y = "\033[33m"
 R = "\033[31m"

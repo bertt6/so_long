@@ -45,6 +45,7 @@ typedef struct s_data
     int         step;
     int         collectnum;
     int         coin;
+    int         exit;
 }               t_data;
 
 int     find_player_x(char *map[]);
@@ -57,6 +58,20 @@ void	ft_move_right(t_data *game);
 
 int	ft_keyboard(int keyhook, t_data *game);
 
+void    ft_map_playable_control(t_data *game);
+void    control1(t_data *game);
+void    control2(t_data *game);
+void    control3(t_data *game);
+void    control4(t_data *game);
+
+void	ft_map_area_control_v2(t_data *game);
+void	ft_wall_control(t_data *game);
+void	ft_wall_control_v2(t_data *game);
+void	ft_player_find(t_data *game);
+void	ft_end_map_control(t_data *game);
+
+void exit_check(char *map[]);
+void coin_check(char *map[]);
 
 
 int	    bercheck(char *s);

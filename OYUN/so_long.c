@@ -49,7 +49,7 @@ int	bercheck(char *s)
 	if (s[i - 1] != 'r' || s[i - 2] != 'e' || s[i - 3] != 'b' || \
 		s[i - 4] != '.' || i < 5)
 	{
-		printf("%sWrong file name!\n", "\x1B[31m");
+		printf("%sYanlış dosya adı!\n", "\x1B[31m");
 		return (0);
 	}
 	return (1);
@@ -70,14 +70,17 @@ int    main(int ac, char **av)
         int fd = open(av[1], O_RDWR);
         char *s = ft_read(fd);
         data->map = ft_split(s, '\n');
+        data->controlmap = ft_split(s, '\n');
 
         data->height = map_height(data->map);
         data->width = map_width(data->map);
         
-        data->controlmap = data->map;
         data->mat_y = data->height;
         data->mat_x = data->width;
 
+        coin_check(data->map);
+        exit_check(data->map);
+        ft_player_find(data);
         ft_argcheck(data->map);
         ft_window(data);
     }
