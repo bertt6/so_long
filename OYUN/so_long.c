@@ -12,31 +12,15 @@ int    mouse(int   button ,int  x, int y, t_data *data)
 {
     int z = x + y + button; 
     (void)z;
-    printf("posx %d posy %d\n", data->position_x, data->position_y);    
+    (void)data;
     return(0);
 }
 
-int	ft_update (t_data *param)
+void map_checking(t_data *data)
 {
-    /*  13 -> W
-        1  -> S
-        0  -> A
-        2  -> D
-        FRONT -> 0
-        LEFT  -> 1
-        RIGHT -> 2
-        BACK  -> 3*/
-	t_data	*program = param;
-	static int	frame;
-	frame++;
-	if (frame == ANIMATION_FRAMES)
-		program->position_y += 1;
-	else if (frame >= (ANIMATION_FRAMES) * 2)
-	{
-		program->position_y -= 1;
-		frame = 0;
-	}
-	return (0);
+    top_left_wall_control(data);
+    right_bottom_wall_control(data);
+    playable_control(data);
 }
 
 int	bercheck(char *s)
@@ -72,12 +56,14 @@ int    main(int ac, char **av)
         data->map = ft_split(s, '\n');
         data->controlmap = ft_split(s, '\n');
 
+    
         data->height = map_height(data->map);
         data->width = map_width(data->map);
         
         data->mat_y = data->height;
         data->mat_x = data->width;
-
+        
+        map_checking(data);
         coin_check(data->map);
         exit_check(data->map);
         ft_player_find(data);

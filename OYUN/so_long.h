@@ -58,26 +58,28 @@ void	ft_move_right(t_data *game);
 
 int	ft_keyboard(int keyhook, t_data *game);
 
-void    ft_map_playable_control(t_data *game);
-void    control1(t_data *game);
-void    control2(t_data *game);
-void    control3(t_data *game);
-void    control4(t_data *game);
+void    control1(t_data *game, int pos_x, int pos_y);
+void    control2(t_data *game, int pos_x, int pos_y);
+void    control3(t_data *game, int pos_x, int pos_y);
+void    control4(t_data *game, int pos_x, int pos_y);
 
-void	ft_map_area_control_v2(t_data *game);
-void	ft_wall_control(t_data *game);
-void	ft_wall_control_v2(t_data *game);
+void    ft_map_playable_control(t_data *game, int pos_x, int pos_y);
 void	ft_player_find(t_data *game);
-void	ft_end_map_control(t_data *game);
 
-void exit_check(char *map[]);
-void coin_check(char *map[]);
+void    exit_check(char *map[]);
+void    coin_check(char *map[]);
+
+void	top_left_wall_control(t_data *game);
+void	right_bottom_wall_control(t_data *game);
+void	playable_control(t_data *game);
+void    map_checking(t_data *data);
+
 
 
 int	    bercheck(char *s);
 void    hookles(t_data *data);
 void	ft_key_hook(int keyhook, t_data *game);
-void can_go_exit(t_data *data);
+void    can_go_exit(t_data *data);
 void    ft_putimages(t_data *data);
 void    ft_window(t_data *data);
 void	*ft_calloc(size_t count, size_t size);
@@ -92,14 +94,7 @@ void	ft_bzero(void *s, size_t n);
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s1);
 
-int	    ft_numlen(long nb);
-void    init_matrix(t_data *games);
-void    map_exit_chack(int i, int j, t_data *games); 
-void    ft_path_find(t_data *games);
-int     ft_path(int y, int x, t_data *games);
-void    ft_paht_put(t_data *games, int result);
-void    ft_visited_clear(t_data *games);
-int     ft_safe(int y, int j, t_data *games);
+
 
 void    ft_argcheck(char *map[]);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);

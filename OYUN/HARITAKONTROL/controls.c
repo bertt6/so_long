@@ -23,7 +23,7 @@ void	ft_map_area_control_v2(t_data *game)
 }
 */
 
-void	ft_wall_control(t_data *game)
+void	top_left_wall_control(t_data *game)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ void	ft_wall_control(t_data *game)
 	}
 }
 
-void	ft_wall_control_v2(t_data *game)
+void	right_bottom_wall_control(t_data *game)
 {
 	int	i;
 
@@ -83,8 +83,8 @@ void	ft_player_find(t_data *game)
 		{
 			if (game->map[game->position_y][game->position_x] == 'P')
 			{
-				ft_map_playable_control(game);
-				ft_end_map_control(game);
+				//ft_map_playable_control(game);
+				playable_control(game);
 				return ;
 			}
 			game->position_x++;
@@ -94,7 +94,7 @@ void	ft_player_find(t_data *game)
 	}
 }
 
-void	ft_end_map_control(t_data *game)
+void	playable_control(t_data *game)
 {
 	if (game->collectnum > 0 || game->exit > 0)
 	{

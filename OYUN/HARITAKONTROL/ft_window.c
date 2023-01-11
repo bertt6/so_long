@@ -33,9 +33,8 @@ void hookles(t_data *data)
     data->mat_y = 0;
     step = ft_itoa(data->step);
     ft_putimages(data);
-    mlx_hook(data->mlx_window, 3, 0, ft_keyboard, data);
+    mlx_hook(data->mlx_window, 2, 0, ft_keyboard, data);
     mlx_hook(data->mlx_window, 4, 0, mouse, data);
-    //mlx_loop_hook(data->mlx, *ft_update, data);
     mlx_string_put(data->mlx, data->mlx_window, 10, 20, 0x00FF00, "Step :");
     mlx_string_put(data->mlx, data->mlx_window, 80, 20, 0x00FF00, step);
     mlx_loop(data->mlx);
@@ -92,10 +91,9 @@ void can_go_exit(t_data *data)
 
 void	ft_key_hook(int keyhook, t_data *game)
 {
-	if (keyhook == 13 && \
-		game->map[game->position_y - 1][game->position_y] != '1'
+	if (keyhook == 13 && game->map[game->position_y - 1][game->position_x] != '1'
 		&& game->map[game->position_y - 1][game->position_x] != 'E')
-        ft_move_up(game);
+        ft_move_up(game);	
 	if (keyhook == 0 && game->map[game->position_y][game->position_x - 1] != '1'
 		&& game->map[game->position_y][game->position_x - 1] != 'E')
         ft_move_left(game);
