@@ -1,5 +1,5 @@
 #include "../so_long.h"
-/*
+
 void    ft_map_playable_control(t_data *game, int pos_x, int pos_y)
 {
     control1(game, pos_x, pos_y);
@@ -10,97 +10,97 @@ void    ft_map_playable_control(t_data *game, int pos_x, int pos_y)
 
 void    control1(t_data *game, int pos_x, int pos_y)
 {
-    if (game->controlmap[game->position_y + 1][game->position_x] != '.' && \
-        game->controlmap[game->position_y + 1][game->position_x] != '1')
+    if (game->controlmap[pos_y + 1][pos_x] != '.' && \
+        game->controlmap[pos_y + 1][pos_x] != '1')
     {
-        game->controlmap[game->position_y][game->position_x] = '.';
-        game->position_y++;
-        if (game->controlmap[game->position_y][game->position_x] == 'C')
+        game->controlmap[pos_y][pos_x] = '.';
+        pos_y++;
+        if (game->controlmap[pos_y][pos_x] == 'C')
             game->collectnum--;
-        if (game->controlmap[game->position_y][game->position_x] == 'E')
+        if (game->controlmap[pos_y][pos_x] == 'E')
         {
             if (game->collectnum != 0)
             {
-                game->position_y--;
+                pos_y--;
                 game->exit--;
                 return ;
             }
             game->exit--;
         }
-        game->position_y--;
+        pos_y--;
         ft_map_playable_control(game, pos_x, pos_y);
     }
 }
 
 void    control2(t_data *game, int pos_x, int pos_y)
 {
-    if (game->controlmap[game->position_y][game->position_x + 1] != '.' && \
-        game->controlmap[game->position_y][game->position_x + 1] != '1')
+    if (game->controlmap[pos_y][pos_x + 1] != '.' && \
+        game->controlmap[pos_y][pos_x + 1] != '1')
     {
-        game->controlmap[game->position_y][game->position_x] = '.';
-        game->position_x++;
-        if (game->controlmap[game->position_y][game->position_x] == 'C')
+        game->controlmap[pos_y][pos_x] = '.';
+        pos_x++;
+        if (game->controlmap[pos_y][pos_x] == 'C')
             game->collectnum--;
-        if (game->controlmap[game->position_y][game->position_x] == 'E')
+        if (game->controlmap[pos_y][pos_x] == 'E')
         {
             if (game->collectnum != 0)
             {
-                game->position_x--;
+                pos_x--;
                 game->exit--;
                 return ;
             }
             game->exit--;
         }
-        game->position_x--;
-        ft_map_playable_control(game);
+        pos_x--;
+        ft_map_playable_control(game, pos_x, pos_y);
     }
 }
 
 void    control3(t_data *game, int pos_x, int pos_y)
 {
-    if (game->controlmap[game->position_y - 1][game->position_x] != '.' && \
-        game->controlmap[game->position_y - 1][game->position_x] != '1')
+    if (game->controlmap[pos_y - 1][pos_x] != '.' && \
+        game->controlmap[pos_y - 1][pos_x] != '1')
     {
-        game->controlmap[game->position_y][game->position_x] = '.';
-        game->position_y--;
-        if (game->controlmap[game->position_y][game->position_x] == 'C')
+        game->controlmap[pos_y][pos_x] = '.';
+        pos_y--;
+        if (game->controlmap[pos_y][pos_x] == 'C')
             game->collectnum--;
-        if (game->controlmap[game->position_y][game->position_x] == 'E')
+        if (game->controlmap[pos_y][pos_x] == 'E')
         {
             if (game->collectnum != 0)
             {
-                game->position_y++;
+                pos_y++;
                 game->exit--;
                 return ;
             }
             game->exit--;
         }
-        game->position_y++;
-        ft_map_playable_control(game);
+        pos_y++;
+        ft_map_playable_control(game, pos_x, pos_y);
     }
 }
 
 void    control4(t_data *game, int pos_x, int pos_y)
 {
-    if (game->controlmap[game->position_y][game->position_x - 1] != '.' && \
-        game->controlmap[game->position_y][game->position_x - 1] != '1')
+   
+    if (game->controlmap[pos_y][pos_x - 1] != '.' && \
+        game->controlmap[pos_y][pos_x - 1] != '1')
     {
-        game->controlmap[game->position_y][game->position_x] = '.';
-        game->position_x--;
-        if (game->controlmap[game->position_y][game->position_x] == 'C')
+        game->controlmap[pos_y][pos_x] = '.';
+        pos_x--;
+        if (game->controlmap[pos_y][pos_x] == 'C')
             game->collectnum--;
-        if (game->controlmap[game->position_y][game->position_x] == 'E')
+        if (game->controlmap[pos_y][pos_x] == 'E')
         {
             if (game->collectnum != 0)
             {
-                game->position_x++;
+                pos_x++;
                 game->exit--;
                 return ;
             }
             game->exit--;
         }
-        ft_map_playable_control(game);
-        game->position_x++;
+        ft_map_playable_control(game, pos_x, pos_y);
+        pos_x++;
     }
 }
-*/

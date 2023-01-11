@@ -79,7 +79,6 @@ void can_go_exit(t_data *data)
 	static int i;
 
 	i = 1;
-	printf("\nCOINS : %d\n", data->coin);
 	coin = ft_itoa(data->coin);
 	mlx_string_put(data->mlx, data->mlx_window, 10, 50, 0x00FF00, "COIN : ");
 	mlx_string_put(data->mlx, data->mlx_window, 80, 50, 0x00FF00, coin);

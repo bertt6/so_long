@@ -15,13 +15,7 @@ void ft_argcheck(char *map[])
     {
         i = 0;
         while(map[j][i])
-        {
-            while (map[k])
-            {
-                printf("%s\n", map[k]);
-                k++;
-            }
-            
+        {    
             if((map[j][i] != 'P') && (map[j][i] != '0') && (map[j][i] != '1') && (map[j][i] != 'E') && (map[j][i] != 'C') && (map[j][i] != '\n'))
             {    
                 write(1, "Geçersiz Map!", 13);

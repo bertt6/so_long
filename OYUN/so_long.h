@@ -59,11 +59,16 @@ void	ft_move_right(t_data *game);
 int	ft_keyboard(int keyhook, t_data *game);
 
 void    control1(t_data *game, int pos_x, int pos_y);
+
 void    control2(t_data *game, int pos_x, int pos_y);
+
 void    control3(t_data *game, int pos_x, int pos_y);
+
 void    control4(t_data *game, int pos_x, int pos_y);
 
+
 void    ft_map_playable_control(t_data *game, int pos_x, int pos_y);
+
 void	ft_player_find(t_data *game);
 
 void    exit_check(char *map[]);

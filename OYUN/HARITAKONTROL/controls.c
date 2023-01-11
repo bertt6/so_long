@@ -83,7 +83,7 @@ void	ft_player_find(t_data *game)
 		{
 			if (game->map[game->position_y][game->position_x] == 'P')
 			{
-				//ft_map_playable_control(game);
+				ft_map_playable_control(game, game->position_x, game->position_y);
 				playable_control(game);
 				return ;
 			}
