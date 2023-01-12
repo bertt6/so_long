@@ -5,12 +5,8 @@ void ft_argcheck(char *map[])
 {
     int i;
     int j;
-    int k;
-    int x;
 
-    k = 0;
     j = 0;
-    x = 0;
     while(*map && map[j])
     {
         i = 0;

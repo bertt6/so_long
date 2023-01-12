@@ -58,16 +58,14 @@ void	ft_move_right(t_data *game);
 
 int	ft_keyboard(int keyhook, t_data *game);
 
-void    control1(t_data *game, int pos_x, int pos_y);
+void find_player(t_data *data);
+void recursive_control(t_data *data, int x, int y);
+void start_control(t_data *data, int x, int y);
+void second_control(t_data *data, int x, int y);
+void third_control(t_data *data, int x, int y);
+void fourth_control(t_data *data, int x, int y);
 
-void    control2(t_data *game, int pos_x, int pos_y);
 
-void    control3(t_data *game, int pos_x, int pos_y);
-
-void    control4(t_data *game, int pos_x, int pos_y);
-
-
-void    ft_map_playable_control(t_data *game, int pos_x, int pos_y);
 
 void	ft_player_find(t_data *game);
 

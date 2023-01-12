@@ -76,9 +76,7 @@ void	ft_putimages(t_data *game)
 void can_go_exit(t_data *data)
 {
 	char *coin;
-	static int i;
 
-	i = 1;
 	coin = ft_itoa(data->coin);
 	mlx_string_put(data->mlx, data->mlx_window, 10, 50, 0x00FF00, "COIN : ");
 	mlx_string_put(data->mlx, data->mlx_window, 80, 50, 0x00FF00, coin);

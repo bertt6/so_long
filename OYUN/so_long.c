@@ -62,11 +62,10 @@ int    main(int ac, char **av)
         
         data->mat_y = data->height;
         data->mat_x = data->width;
-        
+        find_player(data);
         map_checking(data);
         coin_check(data->map);
         exit_check(data->map);
-        ft_player_find(data);
         ft_argcheck(data->map);
         ft_window(data);
     }

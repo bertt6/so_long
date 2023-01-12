@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   all_control.c                                      :+:      :+:    :+:   */
+/*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sekahram <sekahram@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macos <macos@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:14:13 by sekahram          #+#    #+#             */
-/*   Updated: 2022/12/23 13:34:20 by sekahram         ###   ########.fr       */
+/*   Updated: 2023/01/12 23:32:53 by macos            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,6 @@ void	right_bottom_wall_control(t_data *game)
 			exit(1);
 		}
 		i++;
-	}
-}
-
-void	ft_player_find(t_data *game)
-{
-	while (game->position_y < game->mat_y)
-	{
-		while (game->position_x < game->mat_x)
-		{
-			if (game->map[game->position_y][game->position_x] == 'P')
-			{
-				ft_map_playable_control(game, game->position_x, game->position_y);
-				playable_control(game);
-				return ;
-			}
-			game->position_x++;
-		}
-		game->position_x = 0;
-		game->position_y++;
 	}
 }
 
