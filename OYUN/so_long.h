@@ -77,8 +77,9 @@ void	right_bottom_wall_control(t_data *game);
 void	playable_control(t_data *game);
 void    map_checking(t_data *data);
 
-
-
+void line_control(t_data *data);
+void collectable_control(t_data *data);
+void door_control(t_data *data);
 int	    bercheck(char *s);
 void    hookles(t_data *data);
 void	ft_key_hook(int keyhook, t_data *game);

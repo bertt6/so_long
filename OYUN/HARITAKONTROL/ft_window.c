@@ -63,7 +63,9 @@ void	ft_putimages(t_data *game)
 				game->coin++;
 			}
 			if (game->map[game->mat_y][game->mat_x] == 'E')
+			{
                 mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[7], game->mat_x * 64, game->mat_y * 64);
+			}
 			if (game->map[game->mat_y][game->mat_x] == '0')
 				mlx_put_image_to_window(game->mlx, game->mlx_window, game->img[4], game->mat_x * 64, game->mat_y * 64);
 			game->mat_x ++;

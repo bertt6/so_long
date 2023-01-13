@@ -20,7 +20,6 @@ void map_checking(t_data *data)
 {
     top_left_wall_control(data);
     right_bottom_wall_control(data);
-    playable_control(data);
 }
 
 int	bercheck(char *s)
@@ -62,8 +61,12 @@ int    main(int ac, char **av)
         
         data->mat_y = data->height;
         data->mat_x = data->width;
-        find_player(data);
+
+        line_control(data);
         map_checking(data);
+        find_player(data);
+        collectable_control(data);
+        door_control(data);
         coin_check(data->map);
         exit_check(data->map);
         ft_argcheck(data->map);

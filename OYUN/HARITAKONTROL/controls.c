@@ -12,17 +12,6 @@
 
 #include "../so_long.h"
 
-/*
-void	ft_map_area_control_v2(t_data *game)
-{
-	if (BURAYA HARİTANIN ALANI GELİCEK != game->mat_x * game->mat_y)
-	{
-		printf("wrong map desing!!");
-		exit(1);
-	}
-}
-*/
-
 void	top_left_wall_control(t_data *game)
 {
 	int	i;
@@ -77,8 +66,9 @@ void	right_bottom_wall_control(t_data *game)
 
 void	playable_control(t_data *game)
 {
-	if (game->collectnum > 0 || game->exit > 0)
+	if (game->collectnum < 1 || game->exit != 1)
 	{
+		printf("%d, %d", game->collectnum, game->exit);
 		printf("Oynanılabilir değil");
 		exit(1);
 	}
