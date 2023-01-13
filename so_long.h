@@ -27,8 +27,6 @@
 
 typedef struct s_data
 {
-    char        **visited;
-    char        **matrix;
     int         mat_y;
     int         mat_x;
     void        *mlx;
@@ -57,16 +55,14 @@ void	ft_move_down(t_data *game);
 void	ft_move_left(t_data *game);
 void	ft_move_right(t_data *game);
 
-int	ft_keyboard(int keyhook, t_data *game);
+int	    ft_keyboard(int keyhook, t_data *game);
 
-void find_player(t_data *data);
-void recursive_control(t_data *data, int x, int y);
-void start_control(t_data *data, int x, int y);
-void second_control(t_data *data, int x, int y);
-void third_control(t_data *data, int x, int y);
-void fourth_control(t_data *data, int x, int y);
-
-
+void    find_player(t_data *data);
+void    recursive_control(t_data *data, int x, int y);
+void    start_control(t_data *data, int x, int y);
+void    second_control(t_data *data, int x, int y);
+void    third_control(t_data *data, int x, int y);
+void    fourth_control(t_data *data, int x, int y);
 
 void	ft_player_find(t_data *game);
 
@@ -78,9 +74,9 @@ void	right_bottom_wall_control(t_data *game);
 void	playable_control(t_data *game);
 void    map_checking(t_data *data);
 
-void line_control(t_data *data);
-void collectable_control(t_data *data);
-void door_control(t_data *data);
+void    line_control(t_data *data);
+void    collectable_control(t_data *data);
+void    door_control(t_data *data);
 int	    bercheck(char *s);
 void    hookles(t_data *data);
 void	ft_key_hook(int keyhook, t_data *game);
@@ -122,8 +118,5 @@ char	*ft_read(int fd);
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
-
-
-
 
 #endif

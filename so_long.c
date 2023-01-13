@@ -48,20 +48,14 @@ int    main(int ac, char **av)
         data = calloc(sizeof(t_data), 1);
         data->key = 1;
         data->img = (void **)ft_calloc(sizeof(void *), 4);
-
-        
         int fd = open(av[1], O_RDWR);
         char *s = ft_read(fd);
         data->map = ft_split(s, '\n');
         data->controlmap = ft_split(s, '\n');
-
-    
         data->height = map_height(data->map);
         data->width = map_width(data->map);
-        
         data->mat_y = data->height;
         data->mat_x = data->width;
-
         line_control(data);
         map_checking(data);
         find_player(data);
