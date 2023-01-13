@@ -1,11 +1,12 @@
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -L./mlx -lmlx -framework AppKit -framework OpenGL
+CFLAGS = -Wall -Wextra -Werror -g -L./mlx -lmlx -I./printf -framework AppKit -framework OpenGL
 SRCS =  so_long.c \
 		lib/ft_split.c lib/ft_itoa.c lib/ft_strdup.c\
-		HARITAKONTROL/ft_readfile.c HARITAKONTROL/mapcheckcc.c lib/ft_calloc.c \
-		lib/ft_bzero.c lib/ft_memset.c  HARITAKONTROL/ft_window.c move.c HARITAKONTROL/mapchecker.c \
-		HARITAKONTROL/controls.c HARITAKONTROL/con1.c
+		mapcheck/ft_mapread.c mapcheck/ft_general_control.c lib/ft_calloc.c \
+		lib/ft_bzero.c lib/ft_memset.c  mapcheck/ft_window.c ft_move.c mapcheck/ft_playable_control.c \
+		mapcheck/ft_wall_control.c mapcheck/ft_control_map_check.c lib/ft_printf.c lib/ft_source.c
+
 
 Y = "\033[33m"
 R = "\033[31m"
@@ -18,7 +19,11 @@ CUT = "\033[K"
 OBJS= $(SRCS:.c=.o)
 MINI = ./mlx/libmlx.a
 RED = '\033[0;31m'
-all:  ${NAME}
+
+all: ${NAME}
+
+$(PRNTF): 
+	@make -C ./printf
 
 $(MINI):
 	@make -C ./mlx

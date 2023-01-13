@@ -32,7 +32,7 @@ int	bercheck(char *s)
 	if (s[i - 1] != 'r' || s[i - 2] != 'e' || s[i - 3] != 'b' || \
 		s[i - 4] != '.' || i < 5)
 	{
-		printf("%sYanlış dosya adı!\n", "\x1B[31m");
+		ft_printf("%sYanlış dosya adı!\n", "\x1B[31m");
 		return (0);
 	}
 	return (1);
@@ -47,7 +47,7 @@ int    main(int ac, char **av)
         t_data    *data;  
         data = calloc(sizeof(t_data), 1);
         data->key = 1;
-        data->img = (void **)ft_calloc(sizeof(void *), 7);
+        data->img = (void **)ft_calloc(sizeof(void *), 4);
 
         
         int fd = open(av[1], O_RDWR);
@@ -74,7 +74,7 @@ int    main(int ac, char **av)
     }
     else
     {
-        printf("Lütfen geçerli bir harita giriniz. -./so_long map.ber-");
+        ft_printf("Lütfen geçerli bir harita giriniz. -./so_long map.ber-");
         exit(1);
     }
 }

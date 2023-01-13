@@ -17,6 +17,7 @@
 #  define ANIMATION_FRAMES 10
 # endif
 
+# include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include "mlx/mlx.h"
@@ -98,7 +99,15 @@ void	ft_bzero(void *s, size_t n);
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s1);
 
-
+void	ft_putstr(char *s, int *result);
+void	ft_putnbr(int n, int *result);
+void	ft_putchar(char c, int *result);
+void	ft_dhex(unsigned int i, int *result);
+void	ft_uhex(unsigned int i, int *result);
+void	ft_unsigned(unsigned int i, int *result);
+void	ft_pointer(unsigned long long i, int *result);
+void	ft_check(va_list *list, char a, int *result);
+int		ft_printf(const char *s, ...);
 
 void    ft_argcheck(char *map[]);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
