@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_source.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsamli <bsamli@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: macos <macos@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:37:19 by bsamli            #+#    #+#             */
-/*   Updated: 2022/10/26 20:54:06 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/14 01:51:35 by macos            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ void	ft_putstr(char *s, int *result)
 
 void	ft_putnbr(int n, int *result)
 {
-	int	i;
-
-	i = 0;
 	if (n == -2147483648)
 		return (ft_putstr("-2147483648", result));
 	if (n < 0)

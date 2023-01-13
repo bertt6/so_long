@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_mapread.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: macos <macos@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/14 01:40:43 by macos             #+#    #+#             */
+/*   Updated: 2023/01/14 01:48:15 by macos            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
 size_t	ft_strlen(const char *str)
@@ -6,7 +18,7 @@ size_t	ft_strlen(const char *str)
 
 	i = 0;
 	if (!str)
-		return 0;
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
@@ -44,10 +56,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 char	*ft_read(int fd)
 {
 	char	*buff;
-	char 	*str;
-	int		rd_byte;
+	char	*str;
+	int 	rd_byte;
 
-	buff = malloc (1 * sizeof(char));
+	buff = malloc(1 * sizeof(char));
 	str = malloc(1);
 	if (!buff)
 		return (0);
