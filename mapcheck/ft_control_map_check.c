@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_control_map_check.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macos <macos@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:38 by macos             #+#    #+#             */
-/*   Updated: 2023/01/14 01:45:19 by macos            ###   ########.fr       */
+/*   Updated: 2023/01/14 14:02:38 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include "../so_long.h"
-
-void	find_player(t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (data->controlmap[i])
-	{
-		j = 0;
-		while (data->controlmap[i][j])
-		{
-			if (data->controlmap[i][j] == 'P')
-			{
-				recursive_control(data, j, i);
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
-}
 
 void	recursive_control(t_data *data, int x, int y)
 {

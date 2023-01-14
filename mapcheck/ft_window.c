@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_window.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macos <macos@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:41:03 by macos             #+#    #+#             */
-/*   Updated: 2023/01/14 01:50:43 by macos            ###   ########.fr       */
+/*   Updated: 2023/01/14 14:23:07 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,7 @@ void	ft_putimages(t_data *data)
 				data->position_x = data->mat_x;
 				data->position_y = data->mat_y;
 			}
-			if (data->map[data->mat_y][data->mat_x] == 'C')
-			{
-				mlx_put_image_to_window(data->mlx, data->mlx_window,
-					data->img[3], data->mat_x * 64, data->mat_y * 64);
-				data->coin++;
-			}
-			if (data->map[data->mat_y][data->mat_x] == 'E')
-			{
-				mlx_put_image_to_window(data->mlx, data->mlx_window,
-					data->img[4], data->mat_x * 64, data->mat_y * 64);
-			}
-			if (data->map[data->mat_y][data->mat_x] == '0')
-				mlx_put_image_to_window(data->mlx, data->mlx_window,
-					data->img[1], data->mat_x * 64, data->mat_y * 64);
+			ft_putimages1(data, data->mat_x, data->mat_y);
 			data->mat_x++;
 		}
 		data->mat_y++;
@@ -88,25 +75,28 @@ void	ft_putimages(t_data *data)
 	can_go_exit(data);
 }
 
-void	can_go_exit(t_data *data)
+void	ft_putimages1(t_data *data, int mat_x, int mat_y)
 {
-	char	*coin;
-
-	coin = ft_itoa(data->coin);
-	mlx_string_put(data->mlx, data->mlx_window, 10, 50, 0x00FF00, "COIN : ");
-	mlx_string_put(data->mlx, data->mlx_window, 80, 50, 0x00FF00, coin);
-	free(coin);
-	if (data->coin == 0)
+	if (data->map[data->mat_y][mat_x] == 'C')
 	{
-		mlx_string_put(data->mlx, data->mlx_window, 10, 82, 0xFFFFFF,
-			"KAPIYA GIDEBILIRSIN!");
+		mlx_put_image_to_window(data->mlx, data->mlx_window,
+			data->img[3], mat_x * 64, mat_y * 64);
+		data->coin++;
 	}
+	if (data->map[mat_y][mat_x] == 'E')
+	{
+		mlx_put_image_to_window(data->mlx, data->mlx_window,
+			data->img[4], mat_x * 64, mat_y * 64);
+	}
+	if (data->map[mat_y][mat_x] == '0')
+		mlx_put_image_to_window(data->mlx, data->mlx_window,
+			data->img[1], mat_x * 64, mat_y * 64);
 }
 
 void	ft_key_hook(int keyhook, t_data *data)
 {
 	if (keyhook == 13 && data->map[data->position_y
-		- 1][data->position_x] != '1' && data->map[data->position_y
+			- 1][data->position_x] != '1' && data->map[data->position_y
 		- 1][data->position_x] != 'E')
 		ft_move_up(data);
 	if (keyhook == 0 && data->map[data->position_y][data->position_x - 1] != '1'
@@ -119,28 +109,4 @@ void	ft_key_hook(int keyhook, t_data *data)
 		&& data->map[data->position_y][data->position_x + 1] != 'E')
 		ft_move_right(data);
 	ft_printf("Adim sayisi : %d\n", data->step);
-}
-
-int	ft_keyboard(int keyhook, t_data *data)
-{
-	ft_putimages(data);
-	if (keyhook == 53)
-		exit(1);
-	if (data->coin == 0 && ((keyhook == 2
-				&& data->map[data->position_y][data->position_x + 1] == 'E')
-			|| (keyhook == 1 && data->map[data->position_y
-				+ 1][data->position_x] == 'E') || (keyhook == 0
-				&& data->map[data->position_y][data->position_x - 1] == 'E')
-			|| (keyhook == 13 && data->map[data->position_y
-				- 1][data->position_x] == 'E')))
-	{
-		ft_printf("Adim sayisi: %d\n", data->step + 1);
-		ft_printf("Oyun bitti! Kazandiniz!\n");
-		free(data->img);
-		exit(1);
-	}
-	ft_key_hook(keyhook, data);
-	hookles(data);
-
-	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_readfile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macos <macos@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:22 by macos             #+#    #+#             */
-/*   Updated: 2023/01/14 01:40:23 by macos            ###   ########.fr       */
+/*   Updated: 2023/01/14 15:10:36 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 char	*ft_read(int fd)
 {
 	char	*buff;
-	char 	*str;
+	char	*str;
 	int		rd_byte;
 
 	buff = malloc (1 * sizeof(char));

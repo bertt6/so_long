@@ -5,7 +5,8 @@ SRCS =  so_long.c \
 		lib/ft_split.c lib/ft_itoa.c lib/ft_strdup.c\
 		mapcheck/ft_mapread.c mapcheck/ft_general_control.c lib/ft_calloc.c \
 		lib/ft_bzero.c lib/ft_memset.c  mapcheck/ft_window.c ft_move.c mapcheck/ft_playable_control.c \
-		mapcheck/ft_wall_control.c mapcheck/ft_control_map_check.c lib/ft_printf.c lib/ft_source.c
+		mapcheck/ft_wall_control.c mapcheck/ft_control_map_check.c lib/ft_printf.c lib/ft_source.c ft_utils.c \
+		ft_utils1.c leakfinder.c
 
 
 Y = "\033[33m"
