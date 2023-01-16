@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:22 by macos             #+#    #+#             */
-/*   Updated: 2023/01/14 15:10:36 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/16 13:33:03 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,35 +20,6 @@ size_t	ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*d;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (s1)
-	{
-		d = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-		if (!d)
-			return (NULL);
-		while (s1[i] != '\0')
-		{
-			d[i] = s1[i];
-			i++;
-		}
-		while (s2[j] != '\0')
-		{
-			d[i++] = s2[j];
-			j++;
-		}
-		d[i] = '\0';
-		return (d);
-	}
-	return (0);
 }
 
 char	*ft_read(int fd)

@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:35:34 by macos             #+#    #+#             */
-/*   Updated: 2023/01/14 14:59:19 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/16 13:46:57 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	bercheck(char *s)
 	if (s[i - 1] != 'r' || s[i - 2] != 'e' || s[i - 3] != 'b' || \
 		s[i - 4] != '.' || i < 5)
 	{
-		ft_printf("%sYanlış dosya adı!\n", "\x1B[31m");
+		ft_printf("%Wrong file name!\n", "\x1B[31m");
 		return (0);
 	}
 	return (1);
@@ -54,6 +54,7 @@ void	mapreader(t_data *data, char *map)
 	data->width = map_width(data->map);
 	data->mat_y = data->height;
 	data->mat_x = data->width;
+	free(s);
 }
 
 int	main(int ac, char **av)
@@ -74,7 +75,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		ft_printf("Lütfen geçerli bir harita giriniz. -./so_long map.ber-");
+		ft_printf("Wrong input type. -./so_long map.ber-");
 		exit(1);
 	}
 	free(data->img);

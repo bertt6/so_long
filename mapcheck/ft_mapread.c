@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:43 by macos             #+#    #+#             */
-/*   Updated: 2023/01/14 15:11:47 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/16 13:44:55 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ char	*ft_strjoin(char *s1, char *s2)
 	{
 		newstr[j++] = s2[i];
 		i++;
-	}	
+	}
 	newstr[j] = '\0';
+	free(s1);
 	return (newstr);
-}//freelenecek
+}
 
 char	*ft_read(int fd)
 {

@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:41:03 by macos             #+#    #+#             */
-/*   Updated: 2023/01/14 14:23:07 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/16 13:50:25 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ void	ft_key_hook(int keyhook, t_data *data)
 	if (keyhook == 2 && data->map[data->position_y][data->position_x + 1] != '1'
 		&& data->map[data->position_y][data->position_x + 1] != 'E')
 		ft_move_right(data);
-	ft_printf("Adim sayisi : %d\n", data->step);
+	ft_printf("Step : %d\n", data->step);
 }

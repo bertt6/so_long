@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:03:29 by bsamli            #+#    #+#             */
-/*   Updated: 2023/01/14 14:58:02 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/16 13:52:35 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ typedef struct s_data
 int		find_player_x(char *map[]);
 int		find_player_y(char *map[]);
 
-void	ft_move_up(t_data *game);
-void	ft_move_down(t_data *game);
-void	ft_move_left(t_data *game);
-void	ft_move_right(t_data *game);
+void	ft_move_up(t_data *data);
+void	ft_move_down(t_data *data);
+void	ft_move_left(t_data *data);
+void	ft_move_right(t_data *data);
 
-int		ft_keyboard(int keyhook, t_data *game);
+int		ft_keyboard(int keyhook, t_data *data);
 
 void	find_player(t_data *data);
 void	recursive_control(t_data *data, int x, int y);
@@ -78,9 +78,9 @@ void	fourth_control(t_data *data, int x, int y);
 void	exit_check(char *map[]);
 void	coin_check(char *map[]);
 
-void	top_left_wall_control(t_data *game);
-void	right_bottom_wall_control(t_data *game);
-void	playable_control(t_data *game);
+void	top_left_wall_control(t_data *data);
+void	right_bottom_wall_control(t_data *data);
+void	playable_control(t_data *data);
 void	map_checking(t_data *data);
 
 void	line_control(t_data *data);
@@ -89,7 +89,7 @@ void	door_control(t_data *data);
 int		bercheck(char *s);
 void	hookles(t_data *data);
 void	ft_putimages1(t_data *data, int mat_x, int mat_y);
-void	ft_key_hook(int keyhook, t_data *game);
+void	ft_key_hook(int keyhook, t_data *data);
 void	can_go_exit(t_data *data);
 void	ft_putimages(t_data *data);
 void	ft_window(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:41 by macos             #+#    #+#             */
-/*   Updated: 2023/01/14 14:06:53 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/16 13:48:05 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	ft_argcheck(char *map[])
 				&& (map[j][i] != 'E') && (map[j][i] != 'C')
 				&& (map[j][i] != '\n'))
 			{
-				write(1, "Geçersiz Map!", 13);
+				write(1, "Invalid Map!", 13);
 				exit(1);
 			}
 			i++;
 		}
 		j++;
 	}
-	ft_printf("Geçerli map!\n");
+	ft_printf("Valid map!\n");
 }
 
 void	exit_check(char *map[])
@@ -51,7 +51,7 @@ void	exit_check(char *map[])
 		{
 			if (map[i][j] == 'E')
 			{
-				ft_printf("\033[1;96mExit var!\n");
+				ft_printf("\033[1;96m There is exit!\n");
 				return ;
 			}
 			else
@@ -61,6 +61,6 @@ void	exit_check(char *map[])
 		}
 		i++;
 	}
-	ft_printf("exit yok");
+	ft_printf("There isn't exit");
 	exit(1);
 }

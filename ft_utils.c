@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:02:48 by bsamli            #+#    #+#             */
-/*   Updated: 2023/01/14 14:22:25 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/16 13:53:26 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	can_go_exit(t_data *data)
 	if (data->coin == 0)
 	{
 		mlx_string_put(data->mlx, data->mlx_window, 10, 82, 0xFFFFFF,
-			"KAPIYA GIDEBILIRSIN!");
+			"You can go door!");
 	}
 }
 
@@ -81,8 +81,8 @@ int	ft_keyboard(int keyhook, t_data *data)
 			|| (keyhook == 13 && data->map[data->position_y
 				- 1][data->position_x] == 'E')))
 	{
-		ft_printf("Adim sayisi: %d\n", data->step + 1);
-		ft_printf("Oyun bitti! Kazandiniz!\n");
+		ft_printf("Steps: %d\n", data->step + 1);
+		ft_printf("Game Over! You Win!\n");
 		free(data->img);
 		exit(1);
 	}

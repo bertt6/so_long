@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:45 by macos             #+#    #+#             */
-/*   Updated: 2023/01/14 14:03:06 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/16 13:49:30 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	line_control(t_data *data)
 			j++;
 		if (j != flag)
 		{
-			ft_printf("Harita uzunlugunda hata var!");
+			ft_printf("Map length error!");
 			exit(1);
 		}
 		i++;
@@ -52,7 +52,7 @@ void	collectable_control(t_data *data)
 		{
 			if (data->map[i][j] == 'C' && data->controlmap[i][j] != '.')
 			{
-				ft_printf("Ulaşılamayan coin var. KORDINATLARI : x = %d, \
+				ft_printf("Unreachable coin. Coordinate : x = %d, \
                     y = %d", j, i);
 				exit(1);
 			}
@@ -66,7 +66,7 @@ void	door_control(t_data *data)
 {
 	if (data->exit > 1)
 	{
-		ft_printf("Birden fazla kapı bulunmaktadır!");
+		ft_printf("There are exit more than one!");
 		exit(1);
 	}
 }
