@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:41:03 by macos             #+#    #+#             */
-/*   Updated: 2023/01/16 13:50:25 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/19 15:53:52 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,13 @@ void	ft_window(t_data *data)
 
 void	hookles(t_data *data)
 {
-	char	*step;
 
 	data->coin = 0;
 	data->mat_x = 0;
 	data->mat_y = 0;
-	step = ft_itoa(data->step);
 	ft_putimages(data);
 	mlx_hook(data->mlx_window, 2, 0, ft_keyboard, data);
 	mlx_hook(data->mlx_window, 4, 0, mouse, data);
-	mlx_string_put(data->mlx, data->mlx_window, 10, 20, 0x00FF00, "Step :");
-	mlx_string_put(data->mlx, data->mlx_window, 80, 20, 0x00FF00, step);
-	free(step);
 	mlx_loop(data->mlx);
 }
 

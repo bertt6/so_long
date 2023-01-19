@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:35:34 by macos             #+#    #+#             */
-/*   Updated: 2023/01/16 13:46:57 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/19 16:49:52 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	bercheck(char *s)
 	if (s[i - 1] != 'r' || s[i - 2] != 'e' || s[i - 3] != 'b' || \
 		s[i - 4] != '.' || i < 5)
 	{
-		ft_printf("%Wrong file name!\n", "\x1B[31m");
+		ft_printf("Wrong file name!\n");
 		return (0);
 	}
 	return (1);
@@ -45,11 +45,18 @@ void	mapreader(t_data *data, char *map)
 {
 	int		fd;
 	char	*s;
+	int 	i;
 
+	i = 0;
 	fd = open(map, O_RDWR);
 	s = ft_read(fd);
 	data->map = ft_split(s, '\n');
 	data->controlmap = ft_split(s, '\n');
+	while(data->map[i])
+	{
+		printf("%s\n", data->map[i]);
+		i++;
+	}
 	data->height = map_height(data->map);
 	data->width = map_width(data->map);
 	data->mat_y = data->height;
@@ -65,10 +72,11 @@ int	main(int ac, char **av)
 	{
 		if (!bercheck(av[1]))
 			return (0);
-		data = calloc(sizeof(t_data), 1);
+		data = ft_calloc(sizeof(t_data), 1);
 		data->key = 1;
 		data->img = (void **)ft_calloc(sizeof(void *), 4);
-		mapreader(data, av[1]);
+		mapreader(data, av[1]); 
+		map_is_space(data);
 		map_checking(data);
 		ft_window(data);
 		free(data->img);

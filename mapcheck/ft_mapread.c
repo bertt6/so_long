@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:43 by macos             #+#    #+#             */
-/*   Updated: 2023/01/16 13:44:55 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/19 16:45:54 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,57 +24,56 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *left_str, char buff)
 {
 	int		i;
-	char	*newstr;
-	int		j;
+	char	*str;
 
-	if (!s1 || !s2)
-		return (NULL);
-	j = 0;
 	i = 0;
-	newstr = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
-	if (!newstr)
-		return (NULL);
-	while (s1[i])
+	while (left_str[i])
+			i++;
+	str = malloc(i + 2);
+	i = 0;
+	while (left_str[i])
 	{
-		newstr[j++] = s1[i];
+		str[i] = left_str[i];
 		i++;
 	}
+	str[i] = buff;
+	str[i + 1] = '\0';
+	free(left_str);
+	return (str);
+}
+
+int	ft_line_control(char *line)
+{
+	int	i;
+
 	i = 0;
-	while (s2[i])
+	while (line[i])
 	{
-		newstr[j++] = s2[i];
+		if (line[i] == '\0')
+			return (1);
 		i++;
 	}
-	newstr[j] = '\0';
-	free(s1);
-	return (newstr);
+	return (0);
 }
 
 char	*ft_read(int fd)
 {
-	char	*buff;
-	char	*str;
-	int		rd_byte;
+	char	buffer;
+	int		rd_bytes;
+	char	*line;
 
-	buff = malloc(1 * sizeof(char));
-	str = malloc(1);
-	if (!buff)
-		return (0);
-	rd_byte = 1;
-	while (rd_byte != 0)
+	line = malloc(1);
+	line[0] = '\0';
+	rd_bytes = 1;
+	while (rd_bytes > 0 && !ft_line_control(line))
 	{
-		rd_byte = read(fd, buff, 10);
-		if (rd_byte == -1)
-		{
-			free(buff);
-			return (0);
-		}
-		buff[rd_byte] = '\0';
-		str = ft_strjoin(str, buff);
+		rd_bytes = read(fd, &buffer, 1);
+		if (rd_bytes == 0)
+			return (line);
+		line = ft_strjoin(line, buffer);
 	}
-	free(buff);
-	return (str);
+	return (line);
 }
