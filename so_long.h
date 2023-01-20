@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:03:29 by bsamli            #+#    #+#             */
-/*   Updated: 2023/01/19 16:49:23 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/20 14:43:01 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define SO_LONG_H
 
 # define     PL_FT "xpms/player_front.xpm"
-# define     PL_LT "xpms/player_left.xpm"
-# define     PL_RT "xpms/player_right.xpm"
-# define     PL_BC "xpms/player_back.xpm"
 # define     GR "xpms/game_ground.xpm"
 # define     WLL "xpms/wall.xpm"
 # define     COIN "xpms/coin.xpm"
@@ -67,7 +64,7 @@ void	ft_move_left(t_data *data);
 void	ft_move_right(t_data *data);
 
 int		ft_keyboard(int keyhook, t_data *data);
-void map_is_space(t_data *data);
+void 	map_is_space(t_data *data);
 
 
 void	find_player(t_data *data);
