@@ -29,13 +29,13 @@ $(PRNTF):
 $(MINI):
 	@make -C ./mlx
 
-$(NAME): $(OBJS) $(MINI)
-	@$(CC) ${CFLAGS} $(OBJS) -o $(NAME)
+$(NAME): $(MINI) $(OBJS) 
+	$(CC) ${CFLAGS} $(OBJS) -o $(NAME)
 	@echo "\033[1;96mCreating Game\033[1;96m"
 
 %.o: %.c
 	@echo $(R)Complining [$<]
-	@${CC} -c $^ -o $@ -Wall -Werror -Wextra
+	@${CC} -c $^ -o $@ -Wall -Werror -Wextra -g
 
 clean:
 	@rm -rf ${OBJS}

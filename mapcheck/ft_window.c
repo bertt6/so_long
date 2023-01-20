@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:41:03 by macos             #+#    #+#             */
-/*   Updated: 2023/01/19 15:53:52 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/20 18:31:47 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,11 @@ void	ft_window(t_data *data)
 
 void	hookles(t_data *data)
 {
-
 	data->coin = 0;
 	data->mat_x = 0;
 	data->mat_y = 0;
 	ft_putimages(data);
 	mlx_hook(data->mlx_window, 2, 0, ft_keyboard, data);
-	mlx_hook(data->mlx_window, 4, 0, mouse, data);
 	mlx_loop(data->mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:41 by macos             #+#    #+#             */
-/*   Updated: 2023/01/16 13:48:05 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/20 18:34:36 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_argcheck(char *map[])
 		}
 		j++;
 	}
-	ft_printf("Valid map!\n");
 }
 
 void	exit_check(char *map[])
@@ -51,7 +50,6 @@ void	exit_check(char *map[])
 		{
 			if (map[i][j] == 'E')
 			{
-				ft_printf("\033[1;96m There is exit!\n");
 				return ;
 			}
 			else

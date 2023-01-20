@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:03:29 by bsamli            #+#    #+#             */
-/*   Updated: 2023/01/20 14:43:01 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/20 18:39:33 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_data
 	void	*mlx;
 	void	*mlx_window;
 	void	**img;
+	char	*x;
 	int		imgx;
 	int		imgy;
 	int		position_x;
@@ -64,8 +65,7 @@ void	ft_move_left(t_data *data);
 void	ft_move_right(t_data *data);
 
 int		ft_keyboard(int keyhook, t_data *data);
-void 	map_is_space(t_data *data);
-
+void	map_is_space(t_data *data);
 
 void	find_player(t_data *data);
 void	recursive_control(t_data *data, int x, int y);
@@ -119,8 +119,8 @@ char	*ft_substr(char	const *s, unsigned int start, size_t len);
 int		ftcount(char const *s, char c);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
-char	*ft_strjoin(char *left_str, char buff);
-char	*ft_read(int fd);
+char	*ft_strjoin(char *left_str, char *buff);
+char	*ft_read(int fd, char *left_str);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10

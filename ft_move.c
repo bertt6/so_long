@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:39:16 by macos             #+#    #+#             */
-/*   Updated: 2023/01/19 16:49:59 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/20 18:39:01 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,19 @@ void	ft_move_right(t_data *data)
 		data->position_x, data->position_y);
 }
 
-void map_is_space(t_data *data)
+void	map_is_space(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	while(data->map[i])
+	while (data->x[i])
 	{
-		if(data->map[i][0] == '\n')
+		if (data->x[i + 1] && (data->x[i] == '\n' && data->x[i + 1] == '\n'))
 		{
 			ft_printf("Found space!");
-			exit(1);		
+			exit(1);
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:35:34 by macos             #+#    #+#             */
-/*   Updated: 2023/01/19 16:49:52 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/20 18:37:46 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,15 @@ void	mapreader(t_data *data, char *map)
 {
 	int		fd;
 	char	*s;
-	int 	i;
+	int		i;
 
 	i = 0;
 	fd = open(map, O_RDWR);
-	s = ft_read(fd);
+	s = ft_read(fd, data->x);
+	data->x = s;
+	map_is_space(data);
 	data->map = ft_split(s, '\n');
 	data->controlmap = ft_split(s, '\n');
-	while(data->map[i])
-	{
-		printf("%s\n", data->map[i]);
-		i++;
-	}
 	data->height = map_height(data->map);
 	data->width = map_width(data->map);
 	data->mat_y = data->height;
@@ -74,12 +71,10 @@ int	main(int ac, char **av)
 			return (0);
 		data = ft_calloc(sizeof(t_data), 1);
 		data->key = 1;
-		data->img = (void **)ft_calloc(sizeof(void *), 4);
-		mapreader(data, av[1]); 
-		map_is_space(data);
+		data->img = (void **)ft_calloc(sizeof(void *), 5);
+		mapreader(data, av[1]);
 		map_checking(data);
 		ft_window(data);
-		free(data->img);
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:43 by macos             #+#    #+#             */
-/*   Updated: 2023/01/19 16:45:54 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/20 18:34:45 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,61 +19,59 @@ size_t	ft_strlen(const char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	while (str[i])
+	while (str && str[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strjoin(char *left_str, char buff)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
-	char	*str;
+	int		a;
+	char	*array;
+	size_t	len;
 
+	a = 0;
 	i = 0;
-	while (left_str[i])
-			i++;
-	str = malloc(i + 2);
-	i = 0;
-	while (left_str[i])
+	if (s1 != NULL)
 	{
-		str[i] = left_str[i];
-		i++;
-	}
-	str[i] = buff;
-	str[i + 1] = '\0';
-	free(left_str);
-	return (str);
-}
-
-int	ft_line_control(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] == '\0')
-			return (1);
-		i++;
+		len = ft_strlen(s1) + ft_strlen(s2) + 1;
+		array = (char *)malloc(sizeof(char) * (len));
+		if (array == NULL)
+			return (0);
+		while (s1[i] != '\0')
+			array[a++] = s1[i++];
+		i = 0;
+		while (s2[i] != '\0')
+			array[a++] = s2[i++];
+		array[a] = '\0';
+		free(s1);
+		return (array);
 	}
 	return (0);
 }
 
-char	*ft_read(int fd)
+char	*ft_read(int fd, char *left_str)
 {
-	char	buffer;
+	char	*buff;
 	int		rd_bytes;
-	char	*line;
 
-	line = malloc(1);
-	line[0] = '\0';
 	rd_bytes = 1;
-	while (rd_bytes > 0 && !ft_line_control(line))
+	left_str = ft_strdup("");
+	while (rd_bytes != 0)
 	{
-		rd_bytes = read(fd, &buffer, 1);
-		if (rd_bytes == 0)
-			return (line);
-		line = ft_strjoin(line, buffer);
+		buff = malloc(sizeof(char) * 2);
+		if (!buff)
+			return (NULL);
+		rd_bytes = read(fd, buff, 1);
+		if (rd_bytes == -1)
+		{
+			free(buff);
+			return (NULL);
+		}
+		buff[rd_bytes] = '\0';
+		left_str = ft_strjoin(left_str, buff);
+		free(buff);
 	}
-	return (line);
+	return (left_str);
 }
