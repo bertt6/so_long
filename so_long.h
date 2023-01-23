@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:03:29 by bsamli            #+#    #+#             */
-/*   Updated: 2023/01/20 18:39:33 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/23 13:52:46 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,10 @@
 # define     WLL "xpms/wall.xpm"
 # define     COIN "xpms/coin.xpm"
 # define     DOR "xpms/door.xpm"
-# define     WIN_WEIGHT 1800
-# define     WIN_HEIGHT 1200
-
-# ifndef ANIMATION_FRAMES
-#  define ANIMATION_FRAMES 10
-# endif
 
 # include <stdarg.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include "mlx/mlx.h"
-# include <string.h>
 # include <fcntl.h>
 # include <unistd.h>
 
@@ -54,6 +46,7 @@ typedef struct s_data
 	int		collectnum;
 	int		coin;
 	int		exit;
+	int		player_num;
 }				t_data;
 
 int		find_player_x(char *map[]);
@@ -103,6 +96,7 @@ char	*ft_itoa(int n);
 char	*ft_strdup(const char *s1);
 
 void	mapreader(t_data *data, char *map);
+void	player_num_control(t_data *data);
 
 void	ft_putstr(char *s, int *result);
 void	ft_putnbr(int n, int *result);
@@ -121,9 +115,5 @@ char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char *left_str, char *buff);
 char	*ft_read(int fd, char *left_str);
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:41 by macos             #+#    #+#             */
-/*   Updated: 2023/01/20 18:34:36 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/23 13:52:48 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,13 @@ void	exit_check(char *map[])
 	}
 	ft_printf("There isn't exit");
 	exit(1);
+}
+
+void	player_num_control(t_data *data)
+{
+	if(data->player_num != 1)
+	{
+		ft_printf("Birden fazla karakter var");
+		exit(1);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:41:03 by macos             #+#    #+#             */
-/*   Updated: 2023/01/20 18:31:47 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/23 13:59:30 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	hookles(t_data *data)
 	data->coin = 0;
 	data->mat_x = 0;
 	data->mat_y = 0;
+	data->player_num = 0;
 	ft_putimages(data);
+	player_num_control(data);
 	mlx_hook(data->mlx_window, 2, 0, ft_keyboard, data);
 	mlx_loop(data->mlx);
 }
@@ -59,6 +61,7 @@ void	ft_putimages(t_data *data)
 					data->img[0], data->mat_x * 64, data->mat_y * 64);
 				data->position_x = data->mat_x;
 				data->position_y = data->mat_y;
+				data->player_num++;
 			}
 			ft_putimages1(data, data->mat_x, data->mat_y);
 			data->mat_x++;
