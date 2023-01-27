@@ -6,7 +6,7 @@
 /*   By: bsamli <bsamli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:40:41 by macos             #+#    #+#             */
-/*   Updated: 2023/01/23 13:52:48 by bsamli           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:49:16 by bsamli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	exit_check(char *map[])
 
 void	player_num_control(t_data *data)
 {
-	if(data->player_num != 1)
+	if (data->player_num != 1)
 	{
 		ft_printf("Birden fazla karakter var");
 		exit(1);
